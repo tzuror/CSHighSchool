@@ -7,5 +7,6 @@ public class TestOPP {
         onw.empty();
         System.out.println(onw.isEmpty());
         Bucket two = new Bucket(0);
+        System.out.println(two.isEmpty());
     }
 }
