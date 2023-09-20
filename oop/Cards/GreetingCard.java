@@ -1,7 +1,7 @@
 package oop.Cards;
 
 public class GreetingCard {
-    protected String recipient, sender;
+    private String recipient, sender;
     public GreetingCard(String sender, String recipient){
         this.sender = sender;
         this.recipient = recipient;
@@ -13,7 +13,7 @@ public class GreetingCard {
         return "Best Greetings!";
     }
     public String toString(){
-        return "Dear " + this.recipient +",\nBest Greetings!" + 
+        return "Dear " + this.recipient +",\n" + this.greetingMsg() + "\n" + this.sender + "\n******************";
     }
     
 }
