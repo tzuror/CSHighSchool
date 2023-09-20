@@ -1,4 +1,4 @@
-package Bagrot.Year2023;
+package Java.Bagrot.Year2023;
 
 public class Question1 {
     public static boolean posOrder(int[] MainArray){
