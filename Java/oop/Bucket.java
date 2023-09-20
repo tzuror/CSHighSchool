@@ -1,4 +1,4 @@
-package Java.oop;
+package oop;
 
 public class Bucket {
     private int capacity;
