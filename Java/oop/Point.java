@@ -4,10 +4,15 @@ package Java.oop;
 public class Point {
     
     private double x,y;
+    private int Id;
+    private static int Id_counter = 0;
 
     public Point(double x, double y){
         this.x = x;
         this.y = y;
+        this.Id = Id_counter;
+        Id_counter++;
+
     }
 
     public double getX(){
@@ -23,6 +28,9 @@ public class Point {
     }
     public void setY(double y){
         this.y = y;
+    }
+    public int getId(){
+        return this.Id;
     }
     public double distance(Point p){
         return Math.sqrt((this.x - p.getX())*(this.x - p.getX())+(this.y - p.getY())*(this.y - p.getY()));
