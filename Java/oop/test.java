@@ -4,13 +4,13 @@ import java.util.Vector;
 public class test {
 
     public static void main(String[] args) {
-        Vector v = new Vector();
-        v.add(new Point(1, 2));
-        v.add(new Point(3, 4));
-        v.add(new Point(5, 6));
-        v.add(2);
-        System.out.println(v.get(0));
-        
+        Object[] o = new Object[3];
+        o[0] = new Point(1, 2);
+        o[1] = 3;
+        o[2] = "my";
+        for (int i = 0; i < o.length; i++) {
+            System.out.println(o[i]);
+        }
         
     }
 }
