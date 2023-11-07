@@ -10,7 +10,7 @@ def check_cmd(data):
     Check if the command is defined in the protocol, including all parameters
     For example, DELETE c:\work\file.txt is good, but DELETE alone is not
     """
-    if data == "TAKE_SCREENSHOT":
+    if data in ["TAKE_SCREENSHOT", "EXIT"]:
         return True
     try:
         cmd, params = data.split(' ', 1)
@@ -42,8 +42,8 @@ def get_msg(my_socket):
     """
     Massage = my_socket.recv(1024).decode()
     try:
-        lenSeg = int(Massage[0:2])
-        dataSeg = Massage[2:]
+        lenSeg = int(Massage[0:LENGTH_FIELD_SIZE])
+        dataSeg = Massage[LENGTH_FIELD_SIZE:]
     except:
         return False, "Error"
     if int(lenSeg) == len(dataSeg):

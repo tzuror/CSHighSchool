@@ -7,8 +7,8 @@ import socket
 import protocol
 
 
-IP = "127.0.0.1"
-SAVED_PHOTO_LOCATION = r"C:\Users\ort\Pictures\Screenshots\screen.jpg" # The path + filename where the copy of the screenshot at the client should be saved
+IP = "10.100.102.80"
+SAVED_PHOTO_LOCATION = r"C:\Users\ortzu\Pictures\Screenshots\screen.jpg" # The path + filename where the copy of the screenshot at the client should be saved
 
 def handle_server_response(my_socket, cmd):
     """
@@ -19,16 +19,15 @@ def handle_server_response(my_socket, cmd):
     
     # (8) treat all responses except SEND_PHOTO
     valid, respose = protocol.get_msg(my_socket)
+    #print(valid, respose)
     if valid:
-        if cmd == "DIR":
+        if cmd[0:3] == "DIR":
             print(respose.split(';'))
-        elif cmd == "DELETE":
+        elif cmd[0:6] == "DELETE":
             print(respose)
-        elif cmd == "COPY":
+        elif cmd[0:4] == "COPY":
             print(respose)
-        elif cmd == "EXECUTE":
-            print(respose)
-        elif cmd == "TAKE_SCREENSHOT":
+        elif cmd[0:7] == "EXECUTE":
             print(respose)
         elif cmd == 'TAKE_SCREENSHOT':
             Photo = my_socket.recv(int(respose))
@@ -55,7 +54,7 @@ def main():
         cmd = input("Please enter command:\n")
         if protocol.check_cmd(cmd):
             packet = protocol.create_msg(cmd)
-            my_socket.send(packet)
+            my_socket.send(packet.encode())
             handle_server_response(my_socket, cmd)
             if cmd == 'EXIT':
                 break
